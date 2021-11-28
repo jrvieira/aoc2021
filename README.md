@@ -1,13 +1,21 @@
 # Advent of Code 2021
 
-### fetch daily input
+### shell utility
 
-./aoc {{1-25}} {{2015-2021}}
+```
+source util.sh
+```
 
-### dev monitor
+provides:
 
-ghcid --warnings --lint --no-status --test-message="" --clear --no-height-limit --test=":main {{01-25}} test"
+```
+# fetch daily input
+aoc fetch [{d}] [{y}]
 
-### run tests + solve
+# daemonize daily tests
+aoc test {d}
 
-cabal run -v0 -O2 aoc2021 {{01-25}}
+# compile and run optimized solution
+aoc run {d}
+```
+

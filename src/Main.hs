@@ -29,39 +29,40 @@ import qualified Ω24 as Ω ( main , test ) -- 24 Omega
 
 data Day = Day { τ :: IO () , μ :: IO () }
 
-day "01" = Day Α.test Α.main
-day "02" = Day Β.test Β.main
-day "03" = Day Γ.test Γ.main
-day "04" = Day Δ.test Δ.main
-day "05" = Day Ε.test Ε.main
-day "06" = Day Ζ.test Ζ.main
-day "07" = Day Η.test Η.main
-day "08" = Day Θ.test Θ.main
-day "09" = Day Ι.test Ι.main
-day "10" = Day Κ.test Κ.main
-day "11" = Day Λ.test Λ.main
-day "12" = Day Μ.test Μ.main
-day "13" = Day Ν.test Ν.main
-day "14" = Day Ξ.test Ξ.main
-day "15" = Day Ο.test Ο.main
-day "16" = Day Π.test Π.main
-day "17" = Day Ρ.test Ρ.main
-day "18" = Day Σ.test Σ.main
-day "19" = Day Τ.test Τ.main
-day "20" = Day Υ.test Υ.main
-day "21" = Day Φ.test Φ.main
-day "22" = Day Χ.test Χ.main
-day "23" = Day Ψ.test Ψ.main
-day "24" = Day Ω.test Ω.main
-day a = Day (error $ "invalid argument " ++ a) undefined
+day :: Int -> Day
+day 01 = Day Α.test Α.main
+day 02 = Day Β.test Β.main
+day 03 = Day Γ.test Γ.main
+day 04 = Day Δ.test Δ.main
+day 05 = Day Ε.test Ε.main
+day 06 = Day Ζ.test Ζ.main
+day 07 = Day Η.test Η.main
+day 08 = Day Θ.test Θ.main
+day 09 = Day Ι.test Ι.main
+day 10 = Day Κ.test Κ.main
+day 11 = Day Λ.test Λ.main
+day 12 = Day Μ.test Μ.main
+day 13 = Day Ν.test Ν.main
+day 14 = Day Ξ.test Ξ.main
+day 15 = Day Ο.test Ο.main
+day 16 = Day Π.test Π.main
+day 17 = Day Ρ.test Ρ.main
+day 18 = Day Σ.test Σ.main
+day 19 = Day Τ.test Τ.main
+day 20 = Day Υ.test Υ.main
+day 21 = Day Φ.test Φ.main
+day 22 = Day Χ.test Χ.main
+day 23 = Day Ψ.test Ψ.main
+day 24 = Day Ω.test Ω.main
+day a = Day (error $ "invalid argument " ++ show a) undefined
 
 main :: IO ()
 main = do
    (n:m:_) <- (++ repeat "") <$> getArgs
-   run n m
+   run (read n) m
 
-run :: String -> String -> IO ()
+run :: Int -> String -> IO ()
 run n m
    | null m = μ $ day n
    | "test" <- m = τ $ day n
-   | otherwise = error $ "invalid arguments: " ++ n ++ " " ++ m
+   | otherwise = error $ "invalid arguments: " ++ show n ++ " " ++ m

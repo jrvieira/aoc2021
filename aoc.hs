@@ -5,11 +5,11 @@ import Data.List ( intercalate )
 
 main :: IO ()
 main = do
-   (da:ya:_) <- (++ ["",""]) <$> getArgs
+   (da:ya:_) <- (++ repeat "") <$> getArgs
    ys <- head . words <$> readCreateProcess (shell "echo $(date -d \"\" '+%Y')") ""
-   ds <- head . words <$> readCreateProcess (shell "echo $(date -d \"\" '+%d')") ""
-   let y = validate [2015..read ys] $ if null ya then ys else ya
-   let d = validate [1..25] . pad 2 '0' $ if null da then ds else da
+   ds <- head . words <$> readCreateProcess (shell "echo $(date -d \"\" '+%_d')") ""
+   let y = validate (show <$> [2015..read ys]) $ if null ya then ys else ya
+   let d = validate (show <$> [1..25]) $ if null da then ds else da
    putStrLn $ "fetching y:" ++ y ++ " " ++ d
    out <- readCreateProcess (shell $ command y d) ""
    putStrLn out
@@ -21,14 +21,16 @@ command :: String -> String -> String
 command y d = intercalate " "
    [ "curl -# --cookie \"session=" ++ sess ++ "\""
    , "https://adventofcode.com/" ++ y ++ "/day/" ++ d ++ "/input"
-   , "-o \"./input/" ++ d ++ ".txt\" --create-dirs"
-   , "&& cat " ++ "./input/" ++ d ++ ".txt"
+   , "-o \"./input/" ++ pd ++ ".txt\" --create-dirs"
+   , "&& cat " ++ "./input/" ++ pd ++ ".txt"
    ]
+   where
+   pd = pad 2 '0' d
 
 pad :: Int -> Char -> String -> String
 pad n c s = replicate (max 0 $ n - length s) c ++ s
 
-validate :: [Int] -> String -> String
+validate :: [String] -> String -> String
 validate r s
-   | elem (read s) r = s
+   | elem s r = s
    | otherwise = error $ "invalid date: " ++ s

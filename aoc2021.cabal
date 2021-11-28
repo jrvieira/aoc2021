@@ -8,6 +8,7 @@ maintainer: github@jrvieira.com
 extra-source-files: README.md
    , aoc.hs
    , aoc
+   , util.sh
 
 executable aoc2021
     main-is: Main.hs
