@@ -53,11 +53,11 @@ day "21" = Day Φ.test Φ.main
 day "22" = Day Χ.test Χ.main
 day "23" = Day Ψ.test Ψ.main
 day "24" = Day Ω.test Ω.main
-day _ = Day (putStrLn "{{01-25}}") (error "invalid argument")
+day a = Day (error $ "invalid argument " ++ show a) undefined
 
 main :: IO ()
 main = do
-   n <- head <$> getArgs
+   n <- head . (++ [""]) <$> getArgs
    test $ day $ n
    solv $ day $ n
    pure ()
