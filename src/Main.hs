@@ -27,7 +27,7 @@ import qualified Χ22 as Χ ( main , test ) -- 22 Chi
 import qualified Ψ23 as Ψ ( main , test ) -- 23 Psi
 import qualified Ω24 as Ω ( main , test ) -- 24 Omega
 
-data Day = Day { test :: IO () , solv :: IO () }
+data Day = Day { τ :: IO () , μ :: IO () }
 
 day "01" = Day Α.test Α.main
 day "02" = Day Β.test Β.main
@@ -53,12 +53,15 @@ day "21" = Day Φ.test Φ.main
 day "22" = Day Χ.test Χ.main
 day "23" = Day Ψ.test Ψ.main
 day "24" = Day Ω.test Ω.main
-day a = Day (error $ "invalid argument " ++ show a) undefined
+day a = Day (error $ "invalid argument " ++ a) undefined
 
 main :: IO ()
 main = do
-   n <- head . (++ [""]) <$> getArgs
-   test $ day $ n
-   solv $ day $ n
-   pure ()
+   (n:m:_) <- (++ repeat "") <$> getArgs
+   run n m
 
+run :: String -> String -> IO ()
+run n m
+   | null m = μ $ day n
+   | "test" <- m = τ $ day n
+   | otherwise = error $ "invalid arguments: " ++ n ++ " " ++ m

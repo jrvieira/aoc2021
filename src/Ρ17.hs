@@ -14,14 +14,11 @@ main = do
    print $ part1 input
 -- print $ part2 input
 
-parse :: String -> _
 parse = id
 
 -- part 1
 
-part1 :: _
 part1 = id
 
 -- part 2
 
---part2 :: _
