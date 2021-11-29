@@ -15,7 +15,7 @@ aoc fetch [{d}] [{y}]
 # daemonize daily tests
 aoc test {d}
 
-# compile and run optimized solution
+# compile and run solution
 aoc run {d}
 ```
 

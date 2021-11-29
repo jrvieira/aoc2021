@@ -17,7 +17,7 @@ aoc () {
       echo -e "  \033[0;33m# daemonize daily tests\033[0m"
       echo -e "  aoc test {d}"
       echo -e "  "
-      echo -e "  \033[0;33m# compile and run optimized solution\033[0m"
+      echo -e "  \033[0;33m# compile and run solution\033[0m"
       echo -e "  aoc run {d}"
       echo -e "  "
    else
