@@ -6,9 +6,9 @@ author: jrvieira
 maintainer: github@jrvieira.com
 
 extra-source-files: README.md
-   , fetch.hs
-   , fetch
-   , util.sh
+   , aoc.sh
+   , aoc.hs
+   , aoc
 
 executable aoc2021
     main-is: Main.hs

@@ -9,8 +9,11 @@ source util.sh
 provides:
 
 ```
+# open daily challenge
+aoc open {d} [{y}]
+
 # fetch daily input
-aoc fetch [{d}] [{y}]
+aoc fetch {d} [{y}]
 
 # daemonize daily tests
 aoc test {d}
