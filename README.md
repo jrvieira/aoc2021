@@ -3,7 +3,7 @@
 ### shell utility
 
 ```
-source util.sh
+source aoc.sh
 ```
 
 provides:
