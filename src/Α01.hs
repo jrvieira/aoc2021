@@ -27,3 +27,8 @@ part1 = length . filter id . uncurry (zipWith (<)) . (id &&& tail)
 
 part2 = part1 . map (sum . take 3) . tails
 
+{- more performant alternative
+
+part2 = length . filter id . uncurry (zipWith (<)) . (id &&& drop 3)
+
+-}
