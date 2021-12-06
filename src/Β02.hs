@@ -2,7 +2,6 @@ module Β02 where
 
 import Zero.Zero
 import Data.Foldable ( foldl' )
-import Data.Bifunctor ( first, second )
 import Control.Arrow ( (&&&) )
 
 test :: IO ()
@@ -28,10 +27,10 @@ type Pos = (Int,Int)
 type Mov = (String,Int)
 
 move :: Pos -> Mov -> Pos
-move pos (k,n)
-   | "forward" <- k = first (+ n) pos
-   | "up"      <- k = second (subtract n) pos
-   | "down"    <- k = second (+ n) pos
+move (x,y) (k,n)
+   | "forward" <- k = (x+n,y)
+   | "up"      <- k = (x,y-n)
+   | "down"    <- k = (x,y+n)
    | _         <- k = error $ unwords ["invalid command",show k,show n]
 
 -- part 2
