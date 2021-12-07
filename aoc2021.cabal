@@ -26,17 +26,17 @@ executable aoc2021
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends: base ^>=4.14.3.0
+       , split
        , containers
        , process
     hs-source-dirs: src
     default-language: Haskell2010
-    default-extensions: Safe
-       , BangPatterns
-       , BinaryLiterals
-       , GeneralizedNewtypeDeriving
---     , LexicalNegation
-       , OverloadedLists
-       , OverloadedStrings
-       , PartialTypeSignatures
-       , ScopedTypeVariables
+    default-extensions: BangPatterns
        , TupleSections
+       , ScopedTypeVariables
+       , BinaryLiterals
+--     , GeneralizedNewtypeDeriving
+--     , LexicalNegation
+--     , OverloadedLists
+--     , OverloadedStrings
+       , PartialTypeSignatures
