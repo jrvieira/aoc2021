@@ -104,7 +104,3 @@ root :: Tree -> Word
 root (Leaf x)     = x
 root (Node x _ _) = x
 
--- Word version of length
-
-size :: [a] -> Word
-size = toEnum . length
