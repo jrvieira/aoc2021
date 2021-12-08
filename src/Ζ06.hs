@@ -44,21 +44,14 @@ part2 = sum . elems . snd . (!!256) . iterate step . stat
 -- of the update is a linear key map so
 -- signified by that single value. Then
 -- only the 6's are created, as every 0
--- effectively overflows to an 8. Nice!
+-- effectively overflows to an 8. Lies!
 
-type Stat = (D,IntMap Integer)
-
-data D = D0 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8
-   deriving ( Enum )
-
-next :: D -> D
-next D8 = D0
-next d  = succ d
+type Stat = (Int,IntMap Integer)
 
 -- build the list
 
 stat :: School -> Stat
-stat = (D0,) . flip go (fromList $ zip [0..8] (repeat 0))
+stat = (0,) . flip go (fromList $ zip [0..8] (repeat 0))
    where
    go [] = id
    go (x:xs) = go xs . insertWith (+) x 1
@@ -66,10 +59,10 @@ stat = (D0,) . flip go (fromList $ zip [0..8] (repeat 0))
 step :: Stat -> Stat
 step (d,m) = (d',m')
    where
-   d' = next d
+   d' = succ d
    m' = insertWith (+) (ix d' 6) (m ! ix d' 8) m
    --              create the 6's
 
-ix :: D -> Int -> Int
-ix d i = mod (fromEnum d + i) 9
+ix :: Int -> Int -> Int
+ix d i = mod (d + i) 9
 
