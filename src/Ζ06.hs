@@ -62,7 +62,5 @@ step (d,m) = (d',m')
    d' = succ d
    m' = insertWith (+) (ix d' 6) (m ! ix d' 8) m
    --              create the 6's
-
-ix :: Int -> Int -> Int
-ix d i = mod (d + i) 9
+   ix d i = mod (d + i) 9
 
