@@ -60,7 +60,7 @@ step :: Stat -> Stat
 step (d,m) = (d',m')
    where
    d' = succ d
+   -- create the 6's
    m' = insertWith (+) (ix 6) (m ! ix 8) m
-   --              create the 6's
    ix i = mod (d' + i) 9
 
