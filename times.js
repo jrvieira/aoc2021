@@ -95,18 +95,30 @@ function run (data) {
       }
    }
 
+   let colorcodes = [31,32,33,34,35,36,91,92,93,94,95,96]
+   let k = colorcodes.map( c => '\x1b['+c+'m' )
+   let nok = '\x1b[0m'
+
    let print = ''
 
    const mgn = 1
 
-   print += '\n' + ''.padStart(2,' ')
+   let header = ''
 
+   header += '\n' + ''.padStart(2,' ')
+
+   let ki = 0
    for (let member of members) {
-      print += ''.padStart(mgn,' ')
-      print += member.substring(0,6).padStart(11,' ')
+      header += ''.padStart(mgn,' ')
+      header += k[ki]
+      header += member.substring(0,6).padStart(11,' ')
+      header += nok
+      ki ++
    }
 
-   print += '\n'
+   header += '\n'
+
+   print += header
 
    for (let day in records) {
 
@@ -123,25 +135,20 @@ function run (data) {
       }
 
       print += '\n' + ''.padStart(2,' ')
+      let ki = 0
       for (let member of members) {
          print += ''.padStart(mgn,' ')
-         print += '\x1b[33m'
+         print += k[ki]
          print += (records[day] && records[day]['delta'] && records[day]['delta'][member] || '').padStart(11,' ')
-         print += '\x1b[0m'
+         print += nok
+         ki ++
       }
 
       print += '\n'
       print += ' '
    }
 
-   print += '\n' + ''.padStart(2,' ')
-
-   for (let member of members) {
-      print += ''.padStart(mgn,' ')
-      print += member.substring(0,6).padStart(11,' ')
-   }
-
-   print += '\n'
+   print += header
 
    console.log(print)
 
