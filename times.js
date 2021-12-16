@@ -43,7 +43,7 @@ function format (t) {
    if (t) throw new Error ('illegal '+t+' seconds remainder')
 
    let ddys =
-      ndys ? (ndys + 'd') :
+      ndys ? (ndys + '+') :
       ''
    let dhrs =
       ndys ? (nhrs + ':').padStart(3,'0') :
@@ -56,7 +56,7 @@ function format (t) {
       '\''
    let dscs = (nscs+'').padStart(2,'0')
 
-   return ndys > 30 ? '+30d' : ddys + dhrs + dmns + dscs
+   return ndys > 30 ? ndys+'+' : ddys + dhrs + dmns + dscs
 
 }
 
@@ -78,7 +78,7 @@ function run (data) {
          let p1 = $(member.completion_day_level[day])[0] || null
          let p2 = $(member.completion_day_level[day])[1] || null
 
-         let release = +new Date(day+' Dec '+y) / 1000 + (5*60*60) // aoc starts at 5:00'00 UTC
+         let release = +new Date(day+' Dec '+y) / 1000 //+ (5*60*60) // aoc starts at 5:00'00 UTC
 
          if (p1) {
             let t = p1.get_star_ts - release

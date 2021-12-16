@@ -1,7 +1,6 @@
 module Η07 where
 
 import Zero.Zero
-import Control.Arrow
 
 test :: IO ()
 test = do

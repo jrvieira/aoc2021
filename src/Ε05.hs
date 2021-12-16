@@ -18,7 +18,7 @@ main = do
    print $ part2 input
 
 parse :: String -> [Line]
-parse = map ((head &&& last) . take 2 &&& (head &&& last) . drop 2) . map parseNums . lines
+parse = map (((head &&& last) . take 2 &&& (head &&& last) . drop 2) . parseNums) . lines
 
 type Point = (Int,Int)
 type Line = (Point,Point)
