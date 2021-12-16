@@ -1,8 +1,6 @@
 import System.Environment
 import System.Process
-import System.IO
 
-import Data.List
 -- import Data.Functor ( (<&>) )
 -- import Control.Monad ( (>=>) )
 
@@ -116,7 +114,7 @@ fetch ~(d:y:x:_) = do
       let url = "https://adventofcode.com/" ++ vy ++ "/day/" ++ vd
       let ifile = "./input/" ++ pad 2 '0' vd ++ ".txt"
       i <- readCreateProcess (shell $ unwords
-         [ "curl -# --cookie \"session=" ++ sess ++ "\""
+         [ "curl -s --cookie \"session=" ++ sess ++ "\""
          , url ++ "/input"
          , "-o \"" ++ ifile ++ "\" --create-dirs"
          , "&& cat " ++ ifile
