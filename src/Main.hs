@@ -2,30 +2,30 @@ module Main where
 
 import System.Environment
 
-import qualified Α01 as Α ( main , test ) -- 01 Alpha
-import qualified Β02 as Β ( main , test ) -- 02 Beta
-import qualified Γ03 as Γ ( main , test ) -- 03 Gamma
-import qualified Δ04 as Δ ( main , test ) -- 04 Delta
-import qualified Ε05 as Ε ( main , test ) -- 05 Epsilon
-import qualified Ζ06 as Ζ ( main , test ) -- 06 Zeta
-import qualified Η07 as Η ( main , test ) -- 07 Eta
-import qualified Θ08 as Θ ( main , test ) -- 08 Theta
-import qualified Ι09 as Ι ( main , test ) -- 09 Iota
-import qualified Κ10 as Κ ( main , test ) -- 10 Kappa
-import qualified Λ11 as Λ ( main , test ) -- 11 Lambda
-import qualified Μ12 as Μ ( main , test ) -- 12 Mu
-import qualified Ν13 as Ν ( main , test ) -- 13 Nu
-import qualified Ξ14 as Ξ ( main , test ) -- 14 Xi
-import qualified Ο15 as Ο ( main , test ) -- 15 Omicron
-import qualified Π16 as Π ( main , test ) -- 16 Pi
-import qualified Ρ17 as Ρ ( main , test ) -- 17 Rho
-import qualified Σ18 as Σ ( main , test ) -- 18 Sigma
-import qualified Τ19 as Τ ( main , test ) -- 19 Tau
-import qualified Υ20 as Υ ( main , test ) -- 20 Upsilon
-import qualified Φ21 as Φ ( main , test ) -- 21 Phi
-import qualified Χ22 as Χ ( main , test ) -- 22 Chi
-import qualified Ψ23 as Ψ ( main , test ) -- 23 Psi
-import qualified Ω24 as Ω ( main , test ) -- 24 Omega
+import Α01 qualified as Α ( main , test ) -- 01 Alpha
+import Β02 qualified as Β ( main , test ) -- 02 Beta
+import Γ03 qualified as Γ ( main , test ) -- 03 Gamma
+import Δ04 qualified as Δ ( main , test ) -- 04 Delta
+import Ε05 qualified as Ε ( main , test ) -- 05 Epsilon
+import Ζ06 qualified as Ζ ( main , test ) -- 06 Zeta
+import Η07 qualified as Η ( main , test ) -- 07 Eta
+import Θ08 qualified as Θ ( main , test ) -- 08 Theta
+import Ι09 qualified as Ι ( main , test ) -- 09 Iota
+import Κ10 qualified as Κ ( main , test ) -- 10 Kappa
+import Λ11 qualified as Λ ( main , test ) -- 11 Lambda
+import Μ12 qualified as Μ ( main , test ) -- 12 Mu
+import Ν13 qualified as Ν ( main , test ) -- 13 Nu
+import Ξ14 qualified as Ξ ( main , test ) -- 14 Xi
+import Ο15 qualified as Ο ( main , test ) -- 15 Omicron
+import Π16 qualified as Π ( main , test ) -- 16 Pi
+import Ρ17 qualified as Ρ ( main , test ) -- 17 Rho
+import Σ18 qualified as Σ ( main , test ) -- 18 Sigma
+import Τ19 qualified as Τ ( main , test ) -- 19 Tau
+import Υ20 qualified as Υ ( main , test ) -- 20 Upsilon
+import Φ21 qualified as Φ ( main , test ) -- 21 Phi
+import Χ22 qualified as Χ ( main , test ) -- 22 Chi
+import Ψ23 qualified as Ψ ( main , test ) -- 23 Psi
+import Ω24 qualified as Ω ( main , test ) -- 24 Omega
 
 data Day = Day { τ :: IO () , μ :: IO () }
 
