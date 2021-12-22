@@ -4,6 +4,8 @@ import System.Process
 -- import Data.Functor ( (<&>) )
 -- import Control.Monad ( (>=>) )
 
+default (Int)
+
 sess :: String
 sess = "53616c7465645f5f2afc3e3790d81e2e2554c4cc4ca4a5ae0d717104d9e27dfee643bd94e28b9c4bb58850172880f39b"
 
@@ -71,7 +73,7 @@ run ~(d:x:_)
    go :: IO ()
    go = do
       pwd <- init <$> readCreateProcess (shell "basename $PWD") ""
-      system $ "cabal run -v0 -O2 " ++ pwd ++ " " ++ d
+      _ <- system $ "cabal run -v0 -O2 " ++ pwd ++ " " ++ d
       pure ()
 
 -- test
@@ -84,10 +86,10 @@ test ~(d:x:_)
    where
    go :: IO ()
    go = do
-      system $ unwords
+      _ <- system $ unwords
          [ "ghcid"
          , "--warnings"
-         , "--lint"
+      -- , "--lint"
          , "--no-status"
          , "--clear"
          , "--no-height-limit"
