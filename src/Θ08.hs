@@ -3,11 +3,11 @@ module Θ08 where
 import Zero.Zero
 import Data.List
 import Data.IntMap ( IntMap )
-import qualified Data.IntMap.Strict as M
+import Data.IntMap.Strict qualified as M
 import Data.Map.Strict ( Map )
-import qualified Data.Map.Strict as Map
+import Data.Map.Strict qualified as Map
 import Data.Set ( Set )
-import qualified Data.Set as S
+import Data.Set qualified as S
 import Data.Bifunctor
 import Data.Char
 import Data.Tuple
@@ -108,6 +108,6 @@ digits = M.fromList [
    7     7  7     7  7     7  7
 
    =  =  =  =  =  =  =  =  =  =
-   42 17 34 39 30 37 41 25 49 45 <= We choose this sum
+   42 17 34 39 30 37 41 25 49 45 <- sig
 
 -}

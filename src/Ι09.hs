@@ -4,9 +4,9 @@ import Zero.Zero
 import Data.Char
 import Data.List
 import Data.Map.Strict (Map)
-import qualified Data.Map.Strict as M
+import Data.Map.Strict qualified as M
 import Data.Set (Set)
-import qualified Data.Set as S
+import Data.Set qualified as S
 
 test :: IO ()
 test = do

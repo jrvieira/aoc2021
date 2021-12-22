@@ -5,7 +5,7 @@ import Zero.Color
 import Data.Char
 import Data.List
 import Data.Map.Strict (Map)
-import qualified Data.Map.Strict as M
+import Data.Map.Strict qualified as M
 
 test :: IO ()
 test = do
