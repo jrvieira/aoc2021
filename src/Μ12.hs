@@ -68,7 +68,7 @@ trees m = [ Start $ go (m,None k) <$> m M.! "start" | k <- filter (isLower . hea
    go _ "start" = Node []  -- can't go back to the start
    go (_,Twice) "end" = End
    go _ "end" = Node []
-   go (m,v) cave@ ~(c:_)
+   go (m,v) cave@(~(c:_))
       | isUpper c = Node $ go (m,v) <$> m M.! cave
       | None k <- v , cave == k = Node $ go (m,Once k) <$> m M.! cave -- first visit
       | Once k <- v , cave == k = Node $ go (M.delete cave m,Twice) <$> m M.! cave -- second visit
