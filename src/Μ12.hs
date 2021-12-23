@@ -44,7 +44,7 @@ tree m = Start $ go m <$> m M.! "start"
    where
    go _ "start" = Node []  -- can't go back to the start
    go _ "end" = End
-   go m cave@ ~(c:_)
+   go m cave@(~(c:_))
       | not $ M.member cave m = Node []  -- dead end
       | isUpper c = Node $ go m <$> m M.! cave
       | otherwise = Node $ go (M.delete cave m) <$> m M.! cave
