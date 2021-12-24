@@ -4,7 +4,6 @@ import Zero.Zero
 import Data.Char
 import Data.List
 import Data.Map.Strict as M hiding ( take )
-import Data.Bifunctor
 import Algorithm.Search
 
 test :: IO ()
@@ -40,7 +39,7 @@ part1 g = maybe 0 fst $ aStar vertices cost heuristic goal start
    where
    vertices (x,y) = intersect (M.keys g) [(pred x,y),(x,pred y),(succ x,y),(x,succ y)]
    cost _ p = g ! p
-   heuristic (x,y) = ((s-x) + (s-y))  -- # show (x,y)
+   heuristic (x,y) = (s-x) + (s-y)  -- # show (x,y)
    goal = (== (s,s))
    start = (0,0)
    s = pred $ length [ () | (0,_) <- M.keys g ]
@@ -50,5 +49,5 @@ part1 g = maybe 0 fst $ aStar vertices cost heuristic goal start
 part2 g = part1 (big 5)
    where
    big n = M.fromList $ concat [ cal x y <$> M.assocs g | x <- take n [0..] , y <- take n [0..] ]
-   cal x y = bimap (bimap (+s*x) (+s*y)) ((!! (x+y)) . iterate (succ . flip mod 9))
+   cal x y ((x0,y0),c) = ((x0+s*x,y0+s*y),iterate (succ . flip mod 9) c !! x+y)
    s = length [ () | (0,_) <- M.keys g ]
