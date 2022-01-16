@@ -62,11 +62,8 @@ packets = go Nothing
    go Nothing s
       | null s' = []
       | 4 <- val typ = go (Just (Literal (val ver) [])) s'
-      | head s'
-      , (op,rest) <- splitAt (fromIntegral $ val len) (go Nothing s'')
-      = Operation (val ver) (val typ) op : rest
-      | (op,rest) <- splitAt (fromIntegral $ val len) s''
-      = Operation (val ver) (val typ) (go Nothing op) : go Nothing rest
+      | head s' , (op,rest) <- splitAt (fromIntegral $ val len) (go Nothing s'') = Operation (val ver) (val typ) op : rest
+      | (op,rest) <- splitAt (fromIntegral $ val len) s'' = Operation (val ver) (val typ) (go Nothing op) : go Nothing rest
       where
       (ini,s') = splitAt 6 s
       (ver,typ) = splitAt 3 ini
