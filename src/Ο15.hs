@@ -49,5 +49,5 @@ part1 g = maybe 0 fst $ aStar vertices cost heuristic goal start
 part2 g = part1 (big 5)
    where
    big n = M.fromList $ concat [ cal x y <$> M.assocs g | x <- take n [0..] , y <- take n [0..] ]
-   cal x y ((x0,y0),c) = ((x0+s*x,y0+s*y),iterate (succ . flip mod 9) c !! x+y)
+   cal x y ((x0,y0),c) = ((x0+s*x,y0+s*y),iterate (succ . flip mod 9) c !! (x+y))
    s = length [ () | (0,_) <- M.keys g ]
