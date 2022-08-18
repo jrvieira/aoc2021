@@ -3,25 +3,13 @@ module Π16 where
 import Zero.Zero
 import Data.Bits
 import Data.Map.Strict qualified as M
+import Data.List.Split ( splitOn )
 
 test :: IO ()
 test = do
-   teqt "part 1" [16,12,23,31] $ part1 . parse <$>
-      [ "8A004A801A8002F478"
-      , "620080001611562C8802118E34"
-      , "C0015000016115A2E0802F182340"
-      , "A0016C880162017C3686B18A3D4780"
-      ]
-   teqt "part 2" [3,54,7,9,1,0,0,1] $ part2 . parse <$>
-      [ "C200B40A82"
-      , "04005AC33890"
-      , "880086C3E88112"
-      , "CE00C43D881120"
-      , "D8005AC2A8F0"
-      , "F600BC2D8F"
-      , "9C005AC2F8F0"
-      , "9C0141080250320F1802104A08"
-      ]
+   [t1,t2] <- splitOn [""] . lines <$> readFile "./tests/16.txt"
+   teqt "part 1" [16,12,23,31] $ part1 . parse <$> t1
+   teqt "part 2" [3,54,7,9,1,0,0,1] $ part2 . parse <$> t2
 
 main :: IO ()
 main = do

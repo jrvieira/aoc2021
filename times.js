@@ -1,8 +1,9 @@
+const fs = require('fs')
 const { exec } = require('child_process')
 
-const y = +process.argv[2] || 2021
+const y = +process.argv[2] || new Date().getFullYear()
 
-const aoc_sess = '53616c7465645f5f2afc3e3790d81e2e2554c4cc4ca4a5ae0d717104d9e27dfee643bd94e28b9c4bb58850172880f39b'
+const aoc_sess = fs.readFileSync('session.txt', {encoding:'utf8', flag:'r'}).trim()
 const aoc_addr = 'https://adventofcode.com/'+y+'/leaderboard/private/view/983136.json'
 const aoc_comm = 'curl -s --cookie "session='+aoc_sess+'" '+aoc_addr
 
