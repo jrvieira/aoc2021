@@ -5,6 +5,7 @@ import Zero.Zero
 import Data.Word
 import Data.List.Split ( splitOn )
 import Data.Char ( isDigit )
+import Data.Tuple ( swap )
 import Data.Sequence ( Seq(..), (|>), (<|), (><) )
 import Data.Bifunctor ( first, second )
 import Control.Arrow ( (&&&) )
@@ -13,7 +14,7 @@ test :: IO ()
 test = do
    input <- map parse . splitOn "\n\n" <$> readFile "./tests/18.txt"
    teqt "part 1" 4140 $ part1 (last input)
--- teqt "part 2" "" $ part2 input
+   teqt "part 2" 3993 $ part2 (last input)
 
 -- mapM_ (uncurry $ teqt "magnitude") (fmap (magnitude . reduce . snum) <$> [
 --    (143,"[[1,2],[[3,4],5]]") ,
@@ -35,7 +36,7 @@ main :: IO ()
 main = do
    input <- parse <$> readFile "./input/18.txt"
    print $ part1 input
--- print $ part2 input
+   print $ part2 input
 
 parse :: String -> [Snum]
 parse = map snum . lines
@@ -56,6 +57,7 @@ snum = go Empty 0
 
 -- part 1
 
+part1 :: [Snum] -> Word
 part1 = magnitude . foldl1 add
 
 add :: Snum -> Snum -> Snum
@@ -102,13 +104,16 @@ magnitude s = go depth Empty s
    depth = maximum (snd <$> s)
    go :: Word -> Seq (Word, Word) -> Seq (Word, Word) -> Word
 -- go l' s' s | False  # show (snd <$> s') = undefined
-   go 0 Empty ((n,0) :<| Empty) = n  # unwords ["done"]
+   go 0 Empty ((n,0) :<| Empty) = n -- # unwords ["done"]
    go l' s' Empty = go (pred l') Empty s'
    go l' s' s@((n,l) :<| r)
       | l' == l , (m,k) :<| r' <- r , l == k = go l' (s' |> (n*3+m*2,pred l)) r'
       | otherwise = go l' (s' |> (n,l)) r
 
-
-
 -- part 2
 
+part2 :: [Snum] -> Word
+part2 = maximum . map (magnitude . uncurry add) . pairs
+   where
+   pairs :: [Snum] -> [(Snum,Snum)]
+   pairs ls = [ (a,b) | a <- ls , b <- ls , a /= b ]
