@@ -39,8 +39,8 @@ executable aoc2021
        , GADTs
        , ScopedTypeVariables
        , BinaryLiterals
+       , PartialTypeSignatures
 --     , GeneralizedNewtypeDeriving
 --     , LexicalNegation
 --     , OverloadedLists
 --     , OverloadedStrings
-       , PartialTypeSignatures
